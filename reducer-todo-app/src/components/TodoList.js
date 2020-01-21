@@ -1,20 +1,29 @@
-import React from 'react';
+import React, { useReducer } from 'react';
+
+import { initialState, todoReducer } from '../reducers/reducer';
 
 const TodoList = props => {
+
+  // const [state, dispatch] = useReducer(todoReducer, initialState)
+  // console.log('todo list state', state)
+
   return (
     <div>
-      <h2>Thingz to do</h2>
+      <h2>Things to do</h2>
       {
-        props.todoList.map(item => {
+        props.state.todos.map(item => {
           return (
-            <div>
-            <p key={item.id}>{item.item}</p>
-              {item.completed ? 
-                <p className="completedTaskConfirm">COMPLETED!</p>
-              :
-                <p className="completedTaskConfirm">not completed :(</p>}
+            <div onClick={() => {
+              props.dispatch({
+                type: "TOGGLE_COMPLETED"
+              })
+            }}>
+              <p key={item.id}>{item.item}</p>
+                {item.completed ? 
+                  <p className="completedTaskConfirm">COMPLETED!</p>
+                :
+                  <p className="completedTaskConfirm">not completed :(</p>}
             </div>
-           
           )
         })
       }
