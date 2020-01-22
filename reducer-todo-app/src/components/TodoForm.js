@@ -5,7 +5,7 @@ const TodoForm = ({ dispatch }) => {
 
   //form state
   const [taskInput, setTaskInput] = useState('')
-  console.log('task input: ', taskInput)
+  // console.log('task input: ', taskInput)
 
   const handleChanges = e => {
     setTaskInput(e.target.value)

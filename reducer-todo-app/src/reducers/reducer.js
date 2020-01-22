@@ -23,12 +23,11 @@ export const todoReducer = (state, action) => {
         todos: [...state.todos, newItem]
       };
 
-    // case "TOGGLE_COMPLETED":
-    //   console.log('completed toggled')
-    //   return {
-    //     ...state,
-    //     // completed: !state.completed
-    //   }
+      case "TOGGLE_COMPLETED":
+        return {
+          ...state,
+          completed: !state.completed
+        }
 
     default:
       return state

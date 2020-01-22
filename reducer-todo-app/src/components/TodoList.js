@@ -1,12 +1,6 @@
-import React, { useReducer } from 'react';
-
-import { initialState, todoReducer } from '../reducers/reducer';
+import React from 'react';
 
 const TodoList = props => {
-
-  // const [state, dispatch] = useReducer(todoReducer, initialState)
-  // console.log('todo list state', state)
-
   return (
     <div>
       <h2>Things to do</h2>
