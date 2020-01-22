@@ -10,6 +10,27 @@ export const initialState = {
 
 }
 
+const toggleItem = (id, todoList) => {
+  const newList = todoList.map(item => {
+    if(item.id === id){
+      return {
+        ...item,
+        completed: !item.completed
+      }
+    } else {
+      return item;
+    }
+  })
+  return newList
+}
+
+const removeItems = (todoList) => {
+  const nonCompletedList = todoList.filter(item => {
+    return item.completed === false;
+  })
+  return nonCompletedList
+}
+
 export const todoReducer = (state, action) => {
   switch(action.type){
     case "ADD_TASK":
@@ -25,8 +46,12 @@ export const todoReducer = (state, action) => {
 
       case "TOGGLE_COMPLETED":
         return {
-          ...state,
-          completed: !state.completed
+          todos: toggleItem(action.payload, state.todos)
+        }
+
+      case "REMOVE_COMPLETED":
+        return {
+          todos: removeItems(state.todos)
         }
 
     default:

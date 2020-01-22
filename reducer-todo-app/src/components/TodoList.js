@@ -10,20 +10,29 @@ const TodoList = props => {
           return (
             <div onClick={() => {
               props.dispatch({
-                type: "TOGGLE_COMPLETED"
+                type: "TOGGLE_COMPLETED",
+                payload: item.id
               })
             }}>
               <p key={item.id}>{item.item}</p>
-                {
-                  item.completed ? 
-                    <p className="completedTaskConfirm">COMPLETED!</p>
+              {
+                item.completed ?
+                  <p className="completedTaskConfirm">COMPLETED!</p>
                   :
-                    <p className="completedTaskConfirm">not completed</p>
-                }
+                  <p className="completedTaskConfirm">not completed</p>
+              }
             </div>
           )
         })
       }
+
+      <button onClick={() => {
+        props.dispatch({
+          type: "REMOVE_COMPLETED"
+        })
+      }}>
+        Remove Completed
+            </button>
     </div>
   )
 }
