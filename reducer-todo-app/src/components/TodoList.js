@@ -4,6 +4,7 @@ const TodoList = props => {
   return (
     <div>
       <h2>Things to do</h2>
+
       {
         props.state.todos.map(item => {
           return (
@@ -13,10 +14,12 @@ const TodoList = props => {
               })
             }}>
               <p key={item.id}>{item.item}</p>
-                {item.completed ? 
-                  <p className="completedTaskConfirm">COMPLETED!</p>
-                :
-                  <p className="completedTaskConfirm">not completed :(</p>}
+                {
+                  item.completed ? 
+                    <p className="completedTaskConfirm">COMPLETED!</p>
+                  :
+                    <p className="completedTaskConfirm">not completed</p>
+                }
             </div>
           )
         })
